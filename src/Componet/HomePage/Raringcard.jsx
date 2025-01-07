@@ -7,23 +7,26 @@ const Raringcard = ({rev}) => {
   // console.log(id)
     }
     return (
-        <div className="max-w-xs h-[400px] card animate__animated  border   shadow-lg animate__flipInX flex animate__repeat-2	2 animate__slower	3s flex-col justify-between mx-auto bg-white shadow-md rounded-lg overflow-hidden border border-gray-200">
-          <img
+        <div className="max-w-xs h-[450px] card animate__animated  border   shadow-lg animate__flipInX flex animate__repeat-2	2 animate__slower	3s flex-col justify-between mx-auto bg-white shadow-md rounded-lg overflow-hidden border border-gray-200">
+      <div className="h-48">
+      <img
             className="w-full h-48 object-cover"
             src={cover}
                  alt={title}
           />
-          <div className="p-4">
+      </div>
+          <div className="text-left">
   
-            <p className="text-gray-600 text-sm mt-2">
+            <p className="text-black font-semibold text-sm mt-2">
             Name: {title}
             </p>
-            <div className="mt-4">
-              <p className="text-sm font-semibold text-gray-800">Genres:{genreslist}</p>
+            <div className="">
+              <p className="text-sm  text-gray-800">Genres:{genreslist}</p>
+              <p>{}</p>
               <div className="flex  items-center mt-2">
-                <p className="text-sm ">Rating: {rating} / 10</p>
-                <span className="text-yellow-400 text-lg">★★★★</span>
-                <span className="text-gray-400 text-lg">★</span>
+                <p className="text-sm "><span className="text-yellow-400 text-lg">★</span>: {rating} / 10</p>
+                
+                
               </div>
             </div>
           </div>

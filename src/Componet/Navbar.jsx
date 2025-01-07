@@ -11,8 +11,9 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const Navbar = () => {
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
+
   const navigate=useNavigate()
-  const {signOutUser,user,setuser,loader,setLoader}=useContext(AuthContext)
+  const {signOutUser,user,setuser,loader,setLoader,setThem}=useContext(AuthContext)
 const [userinf,setuserinf]=useState({})
 
 
@@ -20,9 +21,11 @@ const handleTheme = () => {
   const newTheme =theme=== "light" ? "dark" : "light";
   setTheme(newTheme);
   localStorage.setItem("theme", newTheme);
+ 
 };
 useEffect(() => {
   document.documentElement.setAttribute("data-theme", theme);
+  setThem(theme)
 }, [theme]);
 
 
@@ -57,14 +60,16 @@ useEffect(() => {
     const  navlist=<>
     <li><NavLink to='/'>Home</NavLink></li>
     <li><NavLink to='/allreview'>All Reviews</NavLink></li>
-    <li><NavLink to='/addreview'>Add Review </NavLink></li>
-    <li><NavLink to='/myreview'>My Reviews</NavLink></li>
-    <li><NavLink to='/watchList'>Game WatchList</NavLink></li>
-    <li> <input type="checkbox" onChange={handleTheme} checked={theme === "dark"} value="synthwave" className="toggle theme-controller" /></li>
+{  user&&  <li><NavLink to='/addreview'>Add Review </NavLink></li>}
+{  user&&  <li><NavLink to='/myreview'>My Reviews</NavLink></li>}
+{  user&&  <li><NavLink to='/watchList'>Game WatchList</NavLink></li>}
+<li><NavLink to='/about'>About Us</NavLink></li>
+<li><NavLink to='/contact'>Contact </NavLink></li>
+    <li> <input type="checkbox" onChange={handleTheme} checked={theme === "dark"} value="synthwave" className="toggle  theme-controller" /></li>
               </>
     return (
    <div>
-         <div className="navbar bg-base-100">
+         <div className="navbar px-8 text-white max-w-screen-lg mb-10 fixed mx-auto left-0 right-0 top-0 z-50 bg-blue-600">
   <div className="navbar-start">
     <div className="dropdown">
       <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -83,22 +88,29 @@ useEffect(() => {
       </div>
       <ul
         tabIndex={0}
-        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
+        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 bg-blue-600 shadow">
      {
          navlist
      }
       </ul>
     </div>
-    <a className="rancho text-3xl">ChillGamer</a>
+    <a className="rancho gap-2 flex items-center justify-center rounded-xl text-3xl">
+  <img
+    src="https://i.ibb.co/B4tJVYT/Dark-Illustrative-The-Mafia-Gaming-Logo.png"
+    className="w-10 h-10 rounded-full"
+    alt="ChillGamer Logo"
+  />
+  ChillGamer
+</a> 
   </div>
   <div className="navbar-center hidden lg:flex">
-    <ul className="menu menu-horizontal px-1">
+    <ul className="menu  menu-horizontal px-1">
    {
     navlist
    }
     </ul>
   </div>
-  <div className="navbar-end">
+  <div className="justify-end">
   {
     user? 
     // <div className="flex flex-col items-center">
@@ -118,7 +130,7 @@ useEffect(() => {
       </div>
       <ul
         tabIndex={0}
-        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
+        className="menu menu-sm dropdown-content bg-blue-600 rounded-box z-[1] mt-3 w-52 p-2 shadow">
         <li>
           <a className="justify-between">
             hi,
@@ -128,14 +140,16 @@ useEffect(() => {
         <li><a onClick={logout}>Log Out</a></li>
       </ul>
     </div>
-    :  <NavLink to='/login' className="btn"> Login <  FaUserCircle className="text-3xl" /> </NavLink>
+    :  <NavLink to='/login' className="btn btn-primary"> Login <  FaUserCircle className="text-3xl" /> </NavLink>
   }
 
   </div>
 </div>
 <ToastContainer
          position="top-center" />
+<div className="max-w-screen-lg mx-auto">
 <Outlet></Outlet>
+</div>
 <Footer></Footer>
    </div>
     );

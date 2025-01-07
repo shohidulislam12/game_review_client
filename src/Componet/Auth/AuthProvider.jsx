@@ -8,7 +8,8 @@ const AuthProvider = ({children}) => {
     const [user,setuser]=useState(null)
     const [loader,setloader]=useState(true)
     const googleProvider = new GoogleAuthProvider();
-
+    const [them,setThem]=useState(localStorage.getItem('theme'))
+console.log("theme",them)
 
 const userRegistar=(email, password)=>{
     setloader(true)
@@ -40,7 +41,7 @@ useEffect(()=>{
 },[])
 
 const authInfu={
-    userRegistar,signIn,signOutUser,googleLogin,user,setuser,loader
+    them,userRegistar,signIn,signOutUser,googleLogin,user,setuser,loader,setThem
 }
 
     return (

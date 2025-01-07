@@ -6,7 +6,7 @@ import { Link, NavLink } from "react-router-dom";
 import { FaEdit } from "react-icons/fa";
 
 const MyreView = () => {
-    const {user,setuser,loader,setLoader}=useContext(AuthContext)
+    const {user,setuser,loader,setLoader,them}=useContext(AuthContext)
     const [yourreview,setreview]=useState([])
 
     useEffect(() => {
@@ -57,7 +57,8 @@ const handledelete=(id)=>{
         });
     }
     return (
-        <div className="min-h-96 my-10">
+        <div 
+        className={`${them=='dark'?'text-white':'text-gray-600'} ${them=='dark'?'bg-black':'bg-white'} min-h-96 my-10` }>
         <h3 className="text-xl font-semibold my-6 text-left">My Review</h3>
         {yourreview==0?<h2 className="text-2xl text-red-600">Opps! You have not any review. <br />plese <span className="text-sm text-green-500 font-bold"><Link  to='/addreview'>Add </Link> </span></h2>:""}
         <div className="flex grid sm:grid-cols-3 grid-cols-1 flex-wrap gap-5">

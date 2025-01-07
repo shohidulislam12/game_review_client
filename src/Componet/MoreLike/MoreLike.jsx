@@ -1,10 +1,12 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Marquee from "react-fast-marquee";
 import { IoIosAddCircle } from "react-icons/io";
 import { TbChartBarPopular } from "react-icons/tb";
 import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../Auth/AuthProvider";
 
 const MoreLike = () => {
+  const {them}=useContext(AuthContext)
   const [games,setGames]=useState([])
   useEffect(()=>{
 fetch('https://game-review-server-swart.vercel.app/liked/games')
@@ -16,19 +18,20 @@ fetch('https://game-review-server-swart.vercel.app/liked/games')
   },[])
    
           return (
-            <div className="max-w-6xl mx-auto my-8">
-              <div className="flex justify-between items-center mb-4">
+            <div    className={`${them=='dark'?'text-white':'text-gray-600'} ${them=='dark'?'bg-black':'bg-white'}  max-w-6xl mx-auto my-8 ` }
+             >
+              <div  className="flex justify-between items-center mb-4">
                 <h2 className="text-2xl font-bold">More Like This</h2>
                <span className="flex gap-6 items-center"> 
                 <NavLink to='/addMore' className="btn btn-ghost">Add More <IoIosAddCircle /></NavLink>
                 </span>
               </div>
               <Marquee>
-              <div className="grid grid-cols-5 gap-10 sm:grid-cols-5 md:grid-cols-5 gap-4">
+              <div className="grid grid-cols-5  sm:grid-cols-5 md:grid-cols-5 gap-4">
                 {games.map((game, index) => (
                   <div
                     key={index}
-                    className="bg-white shadow-md rounded-lg overflow-hidden"
+                    className=" shadow-md rounded-lg overflow-hidden"
                   >
                     <img
                       src={game.cover}

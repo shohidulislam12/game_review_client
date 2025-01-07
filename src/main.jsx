@@ -28,6 +28,9 @@ import UpdateEvent from './Componet/UpCEvent/UpdateEvent.jsx';
 import AddLike from './Componet/MoreLike/AddLike.jsx';
 import MyreView from './Componet/MoreLike/MyreView/MyreView.jsx';
 import Watchlist from './Componet/WatchLish/Watchlist.jsx';
+import AboutUs from './Componet/aboutus/AboutUs.jsx';
+import Contact from './Componet/Contact/Contact.jsx';
+import CatagoriGames from './Componet/categori/CatagoriGames.jsx';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -46,8 +49,17 @@ const router = createBrowserRouter([
       },
       {
         path: "allreview",
-        element:<Privet><AllReview></AllReview></Privet>,
+        element:<AllReview></AllReview>,
         loader:()=>fetch('https://game-review-server-swart.vercel.app/addreview')
+      },
+      {
+        path: "about",
+        element:<AboutUs></AboutUs>
+        
+      },
+      {
+        path: "contact",
+        element:<Contact></Contact>
       },
       {
         path: "login",
@@ -64,6 +76,10 @@ const router = createBrowserRouter([
       {
         path: "watchList",
         element:<Privet><Watchlist></Watchlist></Privet>
+      },
+      {
+        path: "/category/:genreslist",
+        element:<Privet><CatagoriGames></CatagoriGames></Privet>
       },
       {
         path: "review/details/:id",
@@ -94,10 +110,7 @@ const router = createBrowserRouter([
     ]
   },
   
-    {
-      path: "/",
-      element: <h2>footer</h2>
-    },
+
 
  
 

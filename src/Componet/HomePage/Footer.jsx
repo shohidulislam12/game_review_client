@@ -1,28 +1,39 @@
-import React from "react";
-import { FaFacebook, FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import React, { useContext } from "react";
+import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter, FaYoutube } from "react-icons/fa";
+import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../Auth/AuthProvider";
 
 const Footer = () => {
+  const {them}=useContext(AuthContext)
   return (
-    <footer className="bg-gray-900 text-gray-400 py-10">
+    <footer 
+    className={`${them=='dark'?'text-white':'text-gray-600'} ${them=='dark'?'bg-black':'bg-gray-900'}  max-w-screen-lg 
+    mx-auto  py-10 ` } >
+    
       <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8">
         <div>
           <h3 className="text-white font-bold mb-4">Help & Information</h3>
           <ul className="space-y-2">
             <li className="hover:text-white">
-                About Chill Gamer
+               <NavLink to='/allreview'> About Chill Gamer</NavLink>
             </li>
             <li className="hover:text-white">
-                Community Guidelines         
+                 
+                <NavLink >  Community Guidelines  </NavLink>    
             </li>
             <li className="hover:text-white">
-                Advertise With Us
+            <a className="hover:text-white" target="_blank" href="https://www.linkedin.com/in/mdsifat1621900/" >
+            Advertise With Us
+            </a>
+                
             </li>
-            <li className="hover:text-white">
-                Careers
-            </li>
+            
+          
             <li>
-                Support
+            <a className="hover:text-white" target="_blank" href="https://www.linkedin.com/in/mdsifat1621900/" >
+            Support
+            </a>
+              
 
             </li>
           </ul>
@@ -35,19 +46,30 @@ const Footer = () => {
           <Link to="/login" className="btn btn-primary">Sign Up for Free</Link>
         </div>
         <div className="flex flex-col items-center">
+        <a className="rancho flex text-white items-center justify-center rounded-xl text-3xl">
+  <img
+    src="https://i.ibb.co/B4tJVYT/Dark-Illustrative-The-Mafia-Gaming-Logo.png"
+    className="w-20 h-20 rounded-full"
+    alt="ChillGamer Logo"
+  />
+  ChillGamer
+</a>
           <h3 className="text-white font-bold mb-4">Follow Us</h3>
           <div className="flex items-center space-x-4">
-            <a className="hover:text-white" href="https://www.facebook.com/Iamthedevilofmylife">
+            <a target="_blank" className="hover:text-white" href="https://www.facebook.com/Iamthedevilofmylife">
             <FaFacebook />
             </a>
-            <a className="hover:text-white" href="https://x.com/MDSIFAT1621900">
+            <a target="_blank" className="hover:text-white" href="https://x.com/MDSIFAT1621900">
             <FaTwitter />
             </a>
-            <a className="hover:text-white" href="https://www.instagram.com/sifat9951/" >
+            <a target="_blank" className="hover:text-white" href="https://www.instagram.com/sifat9951/" >
             <FaInstagram />
             </a>
-            <a className="hover:text-white" href="https://www.youtube.com/@shohidulIslam-vl1zn" >
+            <a target="_blank" className="hover:text-white" href="https://www.youtube.com/@shohidulIslam-vl1zn" >
             <FaYoutube />
+            </a>
+            <a target="_blank" className="hover:text-white" href="https://www.linkedin.com/in/mdsifat1621900/" >
+            <FaLinkedin />
             </a>
           </div>
         </div>

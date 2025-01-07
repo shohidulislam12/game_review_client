@@ -4,7 +4,7 @@ import { Fade } from "react-awesome-reveal";
 import { MdDelete } from "react-icons/md";
 
 const Watchlist = () => {
-    const {user,}=useContext(AuthContext)
+    const {user,them}=useContext(AuthContext)
     const [wishreview,setwishreview]=useState([])
 
     useEffect(() => {
@@ -27,13 +27,16 @@ const Watchlist = () => {
 
       }
     return (
-        <div className="overflow-x-auto">
+        <div 
+        className={`${them=='dark'?'text-white':'text-gray-600'} ${them=='dark'?'bg-black':'bg-white'}overflow-x-auto mt-10` }
+       >
      
         <h2>All  Wish List: {wishreview.length}</h2>
         <table className="table">
             {/* head */}
             <thead>
-                <tr>
+                <tr
+                   className={`${them=='dark'?'text-white':'text-gray-600'} ${them=='dark'?'bg-black':'bg-white'} ` }  >
                     <th>Serial No</th>
                     <th>Profile</th>
                     <th>Title</th>
