@@ -1,40 +1,24 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { FaStar, FaPlay } from "react-icons/fa";
-import { useParams } from "react-router-dom";
+import { useLoaderData, useParams } from "react-router-dom";
+import { AuthContext } from "../Auth/AuthProvider";
 
 const CatagoriGames = () => {
+  const {them}=useContext(AuthContext)
   const { genreslist } = useParams(); // Get the genre from URL
-  const [games, setGames] = useState([]);
-  const [loading, setLoading] = useState(true);
-console.log(genreslist)
-  useEffect(() => {
-    const fetchGames = async () => {
-      try {
-        const { data } = await axios.get(
-          `http://localhost:3000/addreview/${genreslist}`
-        );
-        setGames(data); // Assuming the response contains a 
-      } catch (error) {
-        console.error("Error fetching category games:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
+ const games=useLoaderData()
 
-    fetchGames();
-  }, [genreslist]);
 
-  if (loading) {
-    return <div className="text-center text-lg my-10">Loading...</div>;
-  }
+ 
   console.log(games)
   return (
-    <div className="my-10">
-  <h2 className="text-3xl font-bold text-center text-gray-800 mb-6">
+    <div 
+    className={`${them=='dark'?'text-white':'text-gray-600'} ${them=='dark'?'bg-black':'bg-white'} min-h-96 my-10` }>
+  <h2 className="text-3xl font-bold text-center mb-6">
     {genreslist} Games
   </h2>
-    <p className="text-center text-gray-600 mb-10">
+    <p className="text-center  mb-10">
       Explore top-rated {genreslist.toLowerCase()} games and find your next adventure!
     </p>
 

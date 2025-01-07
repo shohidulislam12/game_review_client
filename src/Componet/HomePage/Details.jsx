@@ -8,7 +8,7 @@ import { CiBookmark } from "react-icons/ci";
 
 const Details = () => {
     const reviewData=useLoaderData()
-    const {user}=useContext(AuthContext)
+    const {user,them}=useContext(AuthContext)
     const [wishreview,setwishreview]=useState([])
    
 
@@ -23,7 +23,7 @@ useEffect(() => {
         const data = await res.json();
         setwishreview(data);
       } catch (error) {
-        console.error("Error fetching user information:", error);
+      //  console.error("Error fetching user information:", error);
       } finally {       
       }
     };
@@ -64,7 +64,9 @@ const likedreview=(reviewData)=>{
 }
 //liked review end
     return (
-        <div className="bg-white border shadow-md rounded-lg p-4 flex flex-col md:flex-row md:p-10 p-2 gap-5  my-10  mx-auto">
+        <div  
+        className={`${them=='dark'?'text-white':'text-gray-600'} ${them=='dark'?'bg-black':'bg-white'}  border shadow-md rounded-lg p-4 flex flex-col md:flex-row md:p-10 p-2 gap-5  my-10  mx-auto` }
+      >
          
         <div className="w-1/2 mx-auto">
           <img
@@ -84,12 +86,12 @@ const likedreview=(reviewData)=>{
                            <button onClick={()=>likedreview(reviewData)}  className=" btn btn-ghost"><FaBookmark /></button>
                             </div>
                             <span className="text-left flex">Rivewer Email:{useremail}</span>            
-            <h2 className="text-2xl font-bold text-gray-800">Game Title:{title}</h2>
+            <h2 className="text-2xl font-bold ">Game Title:{title}</h2>
             
             <div className="flex items-center space-x-4">
             </div>
           </div>
-          <p className="text-gray-700 border-t-2 text-left mb-4"> <span className="font-bold">Review: <span className="text-sm ">{review}</span></span>
+          <p className=" border-t-2 text-left mb-4"> <span className="font-bold">Review: <span className="text-sm ">{review}</span></span>
         
           </p>
 

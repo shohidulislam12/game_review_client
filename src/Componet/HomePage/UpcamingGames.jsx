@@ -14,7 +14,7 @@ const UpcamingGames = ({ them }) => {
       .then((res) => res.json())
       .then((data) => setEvents(data))
       .catch((error) => {
-        console.error("Error fetching events:", error);
+       // console.error("Error fetching events:", error);
       });
   }, []);
 

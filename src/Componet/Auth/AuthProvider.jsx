@@ -9,7 +9,6 @@ const AuthProvider = ({children}) => {
     const [loader,setloader]=useState(true)
     const googleProvider = new GoogleAuthProvider();
     const [them,setThem]=useState(localStorage.getItem('theme'))
-console.log("theme",them)
 
 const userRegistar=(email, password)=>{
     setloader(true)

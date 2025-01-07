@@ -16,7 +16,7 @@ const Watchlist = () => {
               const data = await res.json();
               setwishreview(data);
             } catch (error) {
-              console.error("Error fetching user information:", error);
+            //  console.error("Error fetching user information:", error);
             } finally {       
             }
           };

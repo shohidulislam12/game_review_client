@@ -38,7 +38,7 @@ useEffect(() => {
         const data = await res.json();
         setuserinf(data);
       } catch (error) {
-        console.error("Error fetching user information:", error);
+     
       } finally {       
       }
     };

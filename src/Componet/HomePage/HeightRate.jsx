@@ -6,7 +6,7 @@ import { AuthContext } from "../Auth/AuthProvider";
 const HeightRate = ({review}) => {
   
 const {them}=useContext(AuthContext)
-console.log(them)
+ //console.log(them)
    const maxratedSort= review.sort((a,b) => parseFloat(b.rating) - parseFloat(a.rating))
   
 

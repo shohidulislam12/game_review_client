@@ -18,7 +18,7 @@ const MyreView = () => {
               const data = await res.json();
               setreview(data);
             } catch (error) {
-              console.error("Error fetching user information:", error);
+             // console.error("Error fetching user information:", error);
             } finally {       
             }
           };

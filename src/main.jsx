@@ -79,7 +79,8 @@ const router = createBrowserRouter([
       },
       {
         path: "/category/:genreslist",
-        element:<Privet><CatagoriGames></CatagoriGames></Privet>
+        element:<Privet><CatagoriGames></CatagoriGames></Privet>,
+          loader:({params})=>fetch(`https://game-review-server-swart.vercel.app/addreview/${params.genreslist}`)
       },
       {
         path: "review/details/:id",

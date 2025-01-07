@@ -18,7 +18,7 @@ const AddReview = () => {
           const data = await res.json();
           setUserinf(data);
         } catch (error) {
-          console.error("Error fetching user information:", error);
+         // console.error("Error fetching user information:", error);
         }
       };
       fetchUserInfo();
